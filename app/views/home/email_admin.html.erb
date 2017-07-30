@@ -1,0 +1,67 @@
+<br>
+<p id="notice"><%= notice %></p>
+
+<h1>Email Admin</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Sensors</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @emails.each do |email| %>
+      <tr>
+        <td><%= email.email %></td>
+        <td><%= set_sensor_names email.sensors %></td>
+        <td><%= link_to 'Edit', edit_email_path(email), class: "btn btn-success" %></td>
+        <td><%= link_to 'Destroy', email, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
+<%= link_to 'Add Email', new_email_path, class: "btn btn-primary" %>
+<button type="button" name="email" class="btn btn-primary" id='email'>Send Email Test</button>
+<hr>
+<ul class="list-group" id="info">
+
+</ul>
+<script type="text/javascript">
+  var host = "<%= @full_host_url %>";
+    $('#email').on('click', function(){
+      console.log('email trigger')
+
+      sendEmail();
+  })
+
+
+  function sendEmail(){
+
+    var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": host + "/email/send",
+    "method": "GET",
+    "headers": {
+      "cache-control": "no-cache"
+    }}
+
+    $.ajax(settings).done(function (response) {
+      console.log(response);
+      $('#info').append('<h3>Notification(s) for the '+ response.location +' have been sent to: </h3>');
+
+      response.contacts.forEach(function(e){
+        $('#info').append('<li class="list-group-item">'+ e + '</li>');
+      })
+
+    });
+
+  }
+</script>

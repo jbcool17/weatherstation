@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WeatherStation</title>
+    <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body class="hold-transition skin-blue">
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, id: "flash_#{name}" %>
+    <% end %>
+    <div class="wrapper">
+      <header class='navbar-header'>
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <nav id="navbar" class='navbar navbar-default navbar-fixed-top navbar-collapse collapse'>
+            <ul class="nav navbar-nav">
+              <li><a href="/" class="logo">
+                Weather Station | <i class="fa fa-sun-o" aria-hidden="true"></i>
+              </a></li>
+              <% if logged_in? %>
+                <li><%= link_to "Live Data", sensor_live_path %></li>
+                <li><%= link_to "Sensor Admin", sensors_path %></li>
+                <li><%= link_to "Email Admin", email_admin_path %></li>
+                <li><%= link_to "Logout #{User.find(session[:user_id]).email}", logout_path %></li>
+              <% else %>
+                <li><%= link_to "Log In", login_path %></li>
+              <% end %>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="#"><i class="fa fa-thermometer-three-quarters" aria-hidden="true"></i></a></li>
+              <li><%= link_to "retrieving data...", weather_current_path, id: 'outside' %></li>
+
+            </ul>
+          </nav>
+
+      </header>
+      <br>
+      <br>
+      <div class="container">
+        <%= yield %>
+      </div>
+    </div>
+
+    <hr>
+
+    <footer class="version">
+      <% if Rails.env.development?	 %>
+        <p>Environment: <%= Rails.env %> | <%= Git::AUTHOR %> | <%= Git::DATE %> | Version <%= Git::TAG %></p>
+        <p>Revision Link: <%= link_to "Last Commit on Bitbucket", "https://bitbucket.org/duartsupport/weatherstation/commits/#{Git::COMMIT}", target: "_blank" %></p>
+    <% else %>
+      <p>JohnBrilla | Version  v0.8b</p>
+    <% end %>
+  </footer>
+  <script type="text/javascript">
+    var host = "<%= @host %>";
+    var url = "<%= @url %>";
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": host + "/outside/last",
+      "method": "GET",
+      "headers": {
+        "cache-control": "no-cache"
+      }
+    }
+
+    $.ajax(settings).done(function (response) {
+      console.log(response);
+      $('a#outside').html('Outside Temperature: <em>' + response.temp + 'F</em>')
+    });
+  </script>
+  </body>
+</html>

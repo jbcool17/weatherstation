@@ -1,0 +1,35 @@
+<br>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @sensor.name %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @sensor.location %>
+</p>
+
+<p>
+  <strong>Api key:</strong>
+  <%= @sensor.api_key %>
+</p>
+
+<p>
+  <strong>Trigger Temp Max:</strong>
+  <%= @sensor.trigger_temp_max %>
+</p>
+
+<p>
+  <strong>Trigger Temp Min:</strong>
+  <%= @sensor.trigger_temp_min %>
+</p>
+
+<p>
+  <strong>Notification Interval:</strong>
+  <%= @sensor.notification_interval %>
+</p>
+
+<%= link_to 'Edit', edit_sensor_path(@sensor) %> |
+<%= link_to 'Back', sensors_path %>

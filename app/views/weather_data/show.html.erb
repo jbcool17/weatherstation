@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Temp:</strong>
+  <%= @weather_datum.temp %>
+</p>
+
+<p>
+  <strong>Humidity:</strong>
+  <%= @weather_datum.humidity %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @weather_datum.location %>
+</p>
+
+<%= link_to 'Edit', edit_weather_datum_path(@weather_datum) %> |
+<%= link_to 'Back', weather_data_path %>

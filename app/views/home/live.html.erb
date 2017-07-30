@@ -1,0 +1,41 @@
+<h2>Live Data</h2>
+<p>
+  <i class="fa fa-refresh"> </i> | Updated every 11 Seconds
+</p>
+<div>
+  <ul class="list-group" id="live">
+    <li class="list-group-item">Waiting for result...</li>
+  </ul>
+</div>
+<script type="text/javascript">
+  var host = "<%= @host %>";
+  var url = "<%= @url %>";
+
+  loadData();
+  setInterval(function(){loadData()},11000);
+
+  function loadData(){
+    var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": host + "/sensor/last",
+    "method": "GET",
+    "headers": {
+      "cache-control": "no-cache"
+    }}
+
+    $.ajax(settings).done(function (response) {
+      $('ul#live').empty();
+      response.forEach(function(d){
+        console.log(d)
+        $('ul#live').append('<li class="list-group-item"><kbd>Location: ' + d.location +
+                            ' | Temp: ' + d.temp +
+                            ' | Humidity: '+ d.humidity +
+                            ' | Date: ' + new Date(d.created_at) +  '</kbd></li>')
+      })
+
+    });
+
+  }
+
+</script>

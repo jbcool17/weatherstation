@@ -1,0 +1,25 @@
+// ------------------------------------
+// Custom NavBar Styles
+// ------------------------------------
+.navbar-header  {
+  background-color: deepskyblue !important;
+  border-color: skyblue !important;
+  .navbar {
+    background-color: deepskyblue !important;
+    border-color: skyblue !important;
+  }
+}
+
+body > div > header > nav > ul > li a {
+  color: white !important;
+  &:hover {
+    color: black !important;
+  }
+}
+
+.navbar-toggle {
+  background-color: deepskyblue !important;
+  .icon-bar {
+    background-color: red;
+  }
+}

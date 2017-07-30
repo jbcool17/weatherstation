@@ -1,0 +1,26 @@
+# == Schema Information
+#
+# Table name: sensors
+#
+#  id                    :integer          not null, primary key
+#  name                  :string
+#  location              :string
+#  api_key               :string
+#  created_at            :datetime         not null
+#  updated_at            :datetime         not null
+#  trigger_temp_max      :integer          default("90")
+#  trigger_temp_min      :integer          default("32")
+#  notification_interval :integer          default("30")
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  location: MyString
+  api_key: MyString
+
+two:
+  name: MyString
+  location: MyString
+  api_key: MyString

@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Weather Data</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Temp</th>
+      <th>Humidity</th>
+      <th>Location</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @weather_data.each do |weather_datum| %>
+      <tr>
+        <td><%= weather_datum.temp %></td>
+        <td><%= weather_datum.humidity %></td>
+        <td><%= weather_datum.location %></td>
+        <td><%= link_to 'Show', weather_datum %></td>
+        <td><%= link_to 'Edit', edit_weather_datum_path(weather_datum) %></td>
+        <td><%= link_to 'Destroy', weather_datum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Weather Datum', new_weather_datum_path %>

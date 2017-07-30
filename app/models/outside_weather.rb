@@ -1,0 +1,2 @@
+class OutsideWeather < ApplicationRecord
+end

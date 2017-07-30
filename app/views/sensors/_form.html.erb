@@ -1,0 +1,43 @@
+<%= form_with(model: sensor, local: true) do |form| %>
+  <% if sensor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(sensor.errors.count, "error") %> prohibited this sensor from being saved:</h2>
+
+      <ul>
+      <% sensor.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :sensor_name, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :location %>
+    <%= form.text_field :location, id: :sensor_location, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label "Notification Trigger Temp Max" %>
+    <%= form.number_field :trigger_temp_max, id: :sensor_trigger_temp_max, class: "form-control", min:0, max: 212 %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label "Notification Trigger Temp Min" %>
+    <%= form.number_field :trigger_temp_min, id: :sensor_trigger_temp_min, class: "form-control", min:0, max: 212 %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label "Notification Interval" %>
+    <%= form.number_field :notification_interval, id: :sensor_notification_interval, class: "form-control", min:0, max: 1000 %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Submit', class: 'btn btn-primary' %>
+  </div>
+<% end %>
+<hr>

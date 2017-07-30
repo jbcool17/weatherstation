@@ -1,0 +1,33 @@
+<%= form_with(model: email, local: true) do |form| %>
+  <% if email.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(email.errors.count, "error") %> prohibited this email from being saved:</h2>
+
+      <ul>
+      <% email.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :email %>
+    <%= form.text_field :email, id: :email_email, type: 'email', class: 'form-control' %>
+  </div>
+<!--
+  <div class="field">
+    <%= form.label :sensors %>
+    <%= form.text_field :sensors, id: :email_sensors %>
+  </div> -->
+
+  <div class="form-group">
+    <%= form.label :sensors %>
+    <%= form.select(:sensors, @sensors,{ :prompt => "Please select"}, { :multiple => true, :size => 5, class: "form-control" }) %>
+  </div>
+
+  <div class="action">
+    <%= form.submit 'Submit', class: "btn btn-primary" %>
+  </div>
+<% end %>
+<hr>

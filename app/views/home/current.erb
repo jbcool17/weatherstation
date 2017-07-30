@@ -1,0 +1,32 @@
+<h2>Outside Weather - Current</h2>
+<div>
+  <ul class="list-group" id="live">
+    <li id="name"class="list-group-item">Waiting for result...</li>
+    <li id="temp"class="list-group-item">Waiting for result...</li>
+    <li id="humidity"class="list-group-item">Waiting for result...</li>
+    <li id="pressure"class="list-group-item">Waiting for result...</li>
+    <li id="description"class="list-group-item">Waiting for result...</li>
+  </ul>
+</div>
+<script type="text/javascript">
+  var host = "<%= @host %>";
+  var url = "<%= @url %>";
+  var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": host + "/outside/last",
+    "method": "GET",
+    "headers": {
+      "cache-control": "no-cache"
+    }
+  }
+
+  $.ajax(settings).done(function (response) {
+    console.log(response);
+    $('li#name').html('Name: ' + response.name)
+    $('li#temp').html('Temperature: ' + response.temp)
+    $('li#humidity').html('Humidity: ' + response.humidity)
+    $('li#pressure').html('Pressure: ' + response.pressure)
+    $('li#description').html('Description: ' + response.description)
+  });
+</script>
