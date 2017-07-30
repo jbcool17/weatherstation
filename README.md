@@ -10,6 +10,9 @@ WEATHER_API_KEY=XXXXX
 AIRBRAKE_PROJECT_ID=XXXX
 AIRBRAKE_PROJECT_KEY=xxxxx
 
+# EMAIL
+EMAIL=email@email.com
+
 # Install Gems
 $ bundle install
 
@@ -18,17 +21,22 @@ $ rake db:migrate
 $ rake db:seed
 
 ```
-- Sign in to dev site - User: admin Pass: test
+
+### Notes
+- Sign in to development site - User: admin Pass: test
 - !!!Email not working yet!!! - only creates and stores notification
 - create sensor and get API-KEY - start posting data
 - set notification temperatures
 - add email
+- create sensor simulation
 
 ### API Example
 ```
-curl -X POST -H "Content-Type: application/json" -H "Cache-Control: no-cache" \
+curl -X POST -H "Content-Type: application/json" \
+  -H "Cache-Control: no-cache" \
   -H "Authorization: Token token=<API-KEY>" \
-  -d '{"weather_datum": {"temp": 81.0, "humidity": 30.0,"location": "loft" }}' "http://localhost:3000/v1/weather_data"
+  -d '{"weather_datum": {"temp": 81.0, "humidity": 30.0", location: 'loft' }}' \
+  "http://localhost:3000/v1/weather_data"
 
 => {"status":"Record was created!","notification":true}
 ```
@@ -36,21 +44,25 @@ curl -X POST -H "Content-Type: application/json" -H "Cache-Control: no-cache" \
 ## Specs
 - Ruby 2.4.0
 - Rail 5.1.1
+
 ### Frontend
   - Yarn / Node
   - bootstrap
   - jquery
   - font awesome
+
 ### Database
   - sqlite3 - development
   - postgres - production
 
-# Whenever Gem/Cron Jobs
+## Whenever Gem/Cron Jobs
 - config/schedule.rb
-- set to run job every 15 minutes - grabs current outside weather and stores to DB
+  - set to run job every 15 minutes - grabs current outside weather and stores to DB
 
 ## Deploy
 - Uses capistrano to deploy to production
+- Created Production server using Centos, Nginx, & Passenger
+
 ```
 # Deploy to production
 $ bundle exec cap production deploy
