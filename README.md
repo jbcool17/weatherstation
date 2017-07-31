@@ -71,4 +71,27 @@ $ bundle exec cap production deploy
 $ bundle exec cap production rails console
 ```
 
-- Also can be setup with Heroku
+## Heroku
+```
+heroku create OR heroku remote:git -a <name>
+
+# Add NodeJS first, then ruby - This will get yarn working
+$ heroku buildpacks:add heroku/nodejs
+$ heroku buildpacks:add heroku/ruby
+
+# Set ENV VARS
+$ heroku config:set VAR=xxxx
+
+# Deploy
+$ git push heroku master
+
+# Setup Database
+$ heroku run rake db:migrate
+$ heroku run rake db:seed
+
+# db:seed creates a test admin user, but for security reasons users can only be created via:
+$ heroku run rails console
+
+# set up Heroku Scheduler to run:
+$ rake outside_weather:current
+```
