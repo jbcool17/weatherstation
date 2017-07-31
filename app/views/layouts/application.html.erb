@@ -27,8 +27,7 @@
               </a></li>
               <% if logged_in? %>
                 <li><%= link_to "Live Data", sensor_live_path %></li>
-                <li><%= link_to "Sensor Admin", sensors_path %></li>
-                <li><%= link_to "Email Admin", email_admin_path %></li>
+                <li><%= link_to "Admin Panel", admin_path %></li>
                 <li><%= link_to "Logout #{User.find(session[:user_id]).email}", logout_path %></li>
               <% else %>
                 <li><%= link_to "Log In", login_path %></li>

@@ -63,7 +63,7 @@ curl -X POST -H "Content-Type: application/json" \
 - Created Production server using Centos, Nginx, & Passenger
 
 ```
-# Deploy to production
+# Deploy to Production
 # Config capistrano
 $ bundle exec cap production deploy
 

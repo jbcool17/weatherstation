@@ -30,7 +30,7 @@ class EmailsController < ApplicationController
 
     respond_to do |format|
       if @email.save
-        format.html { redirect_to email_admin_path, notice: 'Email was successfully created.' }
+        format.html { redirect_to admin_path, notice: 'Email was successfully created.' }
         format.json { render :show, status: :created, location: @email }
       else
         format.html { render :new }
@@ -44,7 +44,7 @@ class EmailsController < ApplicationController
   def update
     respond_to do |format|
       if @email.update(email_params)
-        format.html { redirect_to email_admin_path, notice: 'Email was successfully updated.' }
+        format.html { redirect_to admin_path, notice: 'Email was successfully updated.' }
         format.json { render :show, status: :ok, location: @email }
       else
         format.html { render :edit }
@@ -58,7 +58,7 @@ class EmailsController < ApplicationController
   def destroy
     @email.destroy
     respond_to do |format|
-      format.html { redirect_to email_admin_path, notice: 'Email was successfully destroyed.' }
+      format.html { redirect_to admin_path, notice: 'Email was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
