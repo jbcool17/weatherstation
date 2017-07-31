@@ -4,17 +4,21 @@
 ### Development Setup / Get Started
 ```
 # Setup .env file
+# http://www.openweathermap.org
 WEATHER_API_KEY=XXXXX
 
 # Setup free airbrake account
 AIRBRAKE_PROJECT_ID=XXXX
 AIRBRAKE_PROJECT_KEY=xxxxx
 
-# EMAIL
+# EMAIL -
 EMAIL=email@email.com
 
 # Install Gems
 $ bundle install
+
+# Install JS Libs
+$ yarn install
 
 # Setup DB & Test Data
 $ rake db:migrate
@@ -23,12 +27,7 @@ $ rake db:seed
 ```
 
 ### Notes
-- Sign in to development site - User: admin Pass: test
-- !!!Email not working yet!!! - only creates and stores notification
-- create sensor and get API-KEY - start posting data
-- set notification temperatures
-- add email
-- create sensor simulation
+- notes and tasks are now managed by waffle.io and can be seen in the issues tab
 
 ### API Example
 ```
@@ -65,9 +64,11 @@ curl -X POST -H "Content-Type: application/json" \
 
 ```
 # Deploy to production
+# Config capistrano
 $ bundle exec cap production deploy
 
-# to create admin users on production
+# to create more admin users on production
 $ bundle exec cap production rails console
 ```
+
 - Also can be setup with Heroku
