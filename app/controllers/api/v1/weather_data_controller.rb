@@ -12,20 +12,6 @@ module Api::V1
       render json: WeatherDatum.all
     end
 
-    # GET /weather_data/1
-    # GET /weather_data/1.json
-    # def show
-    # end
-
-    # GET /weather_data/new
-    # def new
-    #   @weather_datum = WeatherDatum.new
-    # end
-
-    # GET /weather_data/1/edit
-    # def edit
-    # end
-
     # POST /weather_data
     # POST /weather_data.json
     def create
@@ -64,30 +50,6 @@ module Api::V1
           render json: {status: "Record wasn't created!", errors: weather_datum.errors}
         end
     end
-
-    # PATCH/PUT /weather_data/1
-    # PATCH/PUT /weather_data/1.json
-    # def update
-    #   respond_to do |format|
-    #     if @weather_datum.update(weather_datum_params)
-    #       format.html { redirect_to @weather_datum, notice: 'Weather datum was successfully updated.' }
-    #       format.json { render :show, status: :ok, location: @weather_datum }
-    #     else
-    #       format.html { render :edit }
-    #       format.json { render json: @weather_datum.errors, status: :unprocessable_entity }
-    #     end
-    #   end
-    # end
-
-    # DELETE /weather_data/1
-    # DELETE /weather_data/1.json
-    # def destroy
-    #   @weather_datum.destroy
-    #   respond_to do |format|
-    #     format.html { redirect_to weather_data_url, notice: 'Weather datum was successfully destroyed.' }
-    #     format.json { head :no_content }
-    #   end
-    # end
 
     private
       # Use callbacks to share common setup or constraints between actions.

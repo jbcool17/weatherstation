@@ -8,21 +8,6 @@ class NotificationsController < ApplicationController
     @notifications = Notification.all
   end
 
-  # GET /notifications/1
-  # GET /notifications/1.json
-  # def show
-  # end
-
-  # GET /notifications/new
-  # def new
-  #   @notification = Notification.new
-  #   @notifications = Notification.all.each_with_index.map { |s,i| [s.location,s.id]}
-  # end
-
-  # GET /notifications/1/edit
-  # def edit
-  # end
-
   # POST /notifications
   # POST /notifications.json
   def create
@@ -38,20 +23,6 @@ class NotificationsController < ApplicationController
       end
     end
   end
-
-  # PATCH/PUT /notifications/1
-  # PATCH/PUT /notifications/1.json
-  # def update
-  #   respond_to do |format|
-  #     if @notification.update(notification_params)
-  #       format.html { redirect_to @notification, notice: 'Notification was successfully updated.' }
-  #       format.json { render :show, status: :ok, location: @notification }
-  #     else
-  #       format.html { render :edit }
-  #       format.json { render json: @notification.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
 
   # DELETE /notifications/1
   # DELETE /notifications/1.json
