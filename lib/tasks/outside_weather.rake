@@ -1,5 +1,5 @@
 namespace :outside_weather do
-  desc "TODO"
+  desc "Get Outside Weather Data"
   task current: :environment do
     url = URI("http://api.openweathermap.org/data/2.5/weather?zip=10019%2Cus&appid=#{ENV['WEATHER_API_KEY']}&units=Imperial")
 
