@@ -6,11 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 WeatherDatum.destroy_all
-Sensor.destroy_all
 Email.destroy_all
 Notification.destroy_all
 OutsideWeather.destroy_all
 User.destroy_all
+Sensor.destroy_all
 
 s1 = Sensor.create name: 'The loft', location: 'loft'
 s2 = Sensor.create name: 'The mezz', location: 'mezz'
