@@ -10,17 +10,17 @@ namespace :heroku do
     20.times do |i|
         WeatherDatum.create temp: (rand(1..1000) * 0.1).round(2),
                             humidity: (rand(1..1000) * 0.1).round(2),
-                            location: 'loft',
+                            location: s1.location,
                             sensor_id: s1.id, created_at: Time.now + i
 
         WeatherDatum.create temp: (rand(1..1000) * 0.1).round(2),
                             humidity: (rand(1..1000) * 0.1).round(2),
-                            location: 'mezz',
+                            location: s2.location,
                             sensor_id: s2.id, created_at: Time.now + i
 
         WeatherDatum.create temp: (rand(1..1000) * 0.1).round(2),
                             humidity: (rand(1..1000) * 0.1).round(2),
-                            location: '9thFloor',
+                            location: s3.location,
                             sensor_id: s3.id, created_at: Time.now + i
     end
   end
