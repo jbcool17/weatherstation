@@ -24,4 +24,8 @@ class WeatherDatum < ApplicationRecord
   def set_location
     self.location = self.sensor.location
   end
+
+  def self.get_sensor_data(key)
+    WeatherDatum.all.select { |d| d.sensor.api_key == key }
+  end
 end
