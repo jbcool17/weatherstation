@@ -16,6 +16,7 @@ class WeatherDatum < ApplicationRecord
   has_one :notification, :dependent => :delete
 
   before_create :set_location
+  before_create :round_data
 
   def set_sensor_id(api_key)
     self.sensor_id = Sensor.find_by(:api_key => api_key).id
@@ -23,6 +24,10 @@ class WeatherDatum < ApplicationRecord
 
   def set_location
     self.location = self.sensor.location
+  end
+
+  def round_data
+    self.temp = self.temp.round(2)
   end
 
   def self.get_sensor_data(key)
