@@ -73,7 +73,7 @@ $ bundle exec cap production rails console
 
 ## Heroku
 ```
-heroku create OR heroku remote:git -a <name>
+heroku create OR heroku git:remote -a <name>
 
 # Add NodeJS first, then ruby - This will get yarn working
 $ heroku buildpacks:add heroku/nodejs
