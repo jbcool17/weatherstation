@@ -12,24 +12,24 @@ OutsideWeather.destroy_all
 User.destroy_all
 Sensor.destroy_all
 
-s1 = Sensor.create name: 'The loft', location: 'loft'
-s2 = Sensor.create name: 'The mezz', location: 'mezz'
-s3 = Sensor.create name: 'It\'s scary up there', location: '9thFloor'
+s1 = Sensor.create name: 'Sensor01', location: 'jam room'
+s2 = Sensor.create name: 'Sensor02', location: 'living room'
+s3 = Sensor.create name: 'Sensor03', location: 'bathroom'
 
 100.times do |i|
     WeatherDatum.create temp: (rand(1..1000) * 0.1).round(2),
                         humidity: (rand(1..1000) * 0.1).round(2),
-                        location: 'loft',
+                        location: s1.location,
                         sensor_id: s1.id, created_at: Time.now + i
 
     WeatherDatum.create temp: (rand(1..1000) * 0.1).round(2),
                         humidity: (rand(1..1000) * 0.1).round(2),
-                        location: 'mezz',
+                        location: s2.location,
                         sensor_id: s2.id, created_at: Time.now + i
 
     WeatherDatum.create temp: (rand(1..1000) * 0.1).round(2),
                         humidity: (rand(1..1000) * 0.1).round(2),
-                        location: '9thFloor',
+                        location: s3.location,
                         sensor_id: s3.id, created_at: Time.now + i
 end
 
