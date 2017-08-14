@@ -32,7 +32,7 @@ class SensorsController < ApplicationController
         format.html { redirect_to admin_path, notice: 'Sensor was successfully created.' }
         format.json { render :show, status: :created, location: @sensor }
       else
-        format.html { render :new }
+        # format.html { render :new }
         format.json { render json: @sensor.errors, status: :unprocessable_entity }
       end
     end

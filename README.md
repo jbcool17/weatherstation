@@ -34,7 +34,7 @@ $ rake db:seed
 curl -X POST -H "Content-Type: application/json" \
   -H "Cache-Control: no-cache" \
   -H "Authorization: Token token=<API-KEY>" \
-  -d '{"weather_datum": {"temp": 81.0, "humidity": 30.0", location: 'loft' }}' \
+  -d '{ "weather_datum": {"temp": 81.0, "humidity": 30.0" }}' \
   "http://localhost:3000/v1/weather_data"
 
 => {"status":"Record was created!","notification":true}
