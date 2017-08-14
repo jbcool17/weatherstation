@@ -24,6 +24,10 @@ $ yarn install
 $ rake db:migrate
 $ rake db:seed
 
+
+# Start Dev Sensor Simulation
+# This will make weather data posts to development
+$ rake auto_sensor:start
 ```
 
 ### Notes
