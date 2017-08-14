@@ -1,6 +1,7 @@
 # WeatherStation - README
 - rails application for managing Arduino weather sensors
 
+
 ### Development Setup / Get Started
 ```
 # Setup .env file
