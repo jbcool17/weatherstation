@@ -1,6 +1,6 @@
 # WeatherStation - README
 - rails application for managing Arduino weather sensors
-
+- Demo Site Creds: admin / test
 
 ### Development Setup / Get Started
 ```
