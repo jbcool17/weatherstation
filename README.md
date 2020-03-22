@@ -6,7 +6,7 @@
 ```
 # Setup .env file
 # http://www.openweathermap.org
-WEATHER_API_KEY=XXXXX
+WEATHER_API_KEY=81f50b9920dbfaac935753584023c43f
 
 # Setup free airbrake account
 AIRBRAKE_PROJECT_ID=XXXX
@@ -14,6 +14,7 @@ AIRBRAKE_PROJECT_KEY=xxxxx
 
 # EMAIL -
 EMAIL=email@email.com
+RAILS_ENV=development
 
 # Install Gems
 $ bundle install
