@@ -19,8 +19,9 @@ WORKDIR /app
 COPY . /app
 
 RUN bundle install \
- && yarn install \
- && rake db:migrate \
+ && yarn install
+
+RUN rake db:migrate \
  && rake db:seed
 
-CMD ['rails', 's']
+ENTRYPOINT ["rails", "server"]

@@ -30,6 +30,11 @@ $ rake db:seed
 # Start Dev Sensor Simulation
 # This will make weather data posts to development
 $ rake auto_sensor:start
+
+
+docker build -t ws .
+docker run --rm -it -p 3000:3000 ws
+
 ```
 
 ### Notes
