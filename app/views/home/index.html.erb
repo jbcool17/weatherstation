@@ -2,11 +2,13 @@
   <div class='text-center sensor-panel'>
     <h3><%= @sensors[0].name %></h3>
 
+    <h4>Tempurature</h4>
     <div class="temp-circle">
       <%= @sensors[0].weather_datum.last.temp %>&#8457;
     </div>
+    <h4>Humidity</h4>
     <div class="temp-circle">
-      <%= @sensors[0].weather_datum.last.humidity %>&#8457;
+      <%= @sensors[0].weather_datum.last.humidity %>
     </div>
   </div>
 
