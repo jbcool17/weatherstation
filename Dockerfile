@@ -21,7 +21,8 @@ COPY . /app
 RUN bundle install \
  && yarn install
 
-RUN rake db:migrate \
- && rake db:seed
+#COPY development.sqlite3 db/development.sqlite3
+#RUN rake db:migrate \
+# && rake db:seed
 
 ENTRYPOINT ["rails", "server"]
