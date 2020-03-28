@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY . /app
 
-RUN gem update --system && gem install bundler && bundle install \
+RUN gem install bundler && bundle update --bundler && bundle install \
  && yarn install
 
 #COPY development.sqlite3 db/development.sqlite3
