@@ -1,4 +1,4 @@
-FROM ruby:2.4.0 as builder
+FROM ruby:2.7.0 as builder
 
 RUN apt update \
  && apt upgrade -y --force-yes \
