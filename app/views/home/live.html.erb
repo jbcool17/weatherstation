@@ -49,11 +49,10 @@
     <div class="temp-circle">
       <%= s.weather_datum.last.temp %>&#8457;
     </div>
-    <!-- <p>Current: <%= s.weather_datum.last.created_at.in_time_zone('Eastern Time (US & Canada)').to_formatted_s(:long) %> | <%= s.weather_datum.last.temp %> | <%= s.weather_datum.last.humidity %> | <%= s.weather_datum.last.location %></p> -->
     <div class="chart">
-      <%= line_chart [{name: s.name, data: s.weather_datum.each_slice(10).map(&:last).collect { |t| [t.created_at.strftime("%H:%M:%S"), t.temp] }},
-                      {name: 'Max', data: s.weather_datum.last(10).collect { |t| [t.created_at.strftime("%H:%M:%S"), s.trigger_temp_max] } },
-                      {name: 'Min', data: s.weather_datum.last(10).collect { |t| [t.created_at.strftime("%H:%M:%S"), s.trigger_temp_min] } }],
+      <%= line_chart [{name: s.name, data: s.weather_datum.each_slice(10).map(&:last).last(10).collect { |t| [t.created_at.strftime("%H:%M:%S"), t.temp] }},
+                      {name: 'Max', data: s.weather_datum.each_slice(10).map(&:last).last(10).collect { |t| [t.created_at.strftime("%H:%M:%S"), s.trigger_temp_max] } },
+                      {name: 'Min', data: s.weather_datum.each_slice(10).map(&:last).last(10).collect { |t| [t.created_at.strftime("%H:%M:%S"), s.trigger_temp_min] } }],
                       width: "85%", height: "200px",colors: ["forestgreen", "tomato", "deepskyblue"] %>
     </div>
     <p>Max: <%= s.trigger_temp_max %> / Min: <%= s.trigger_temp_min %></p>
