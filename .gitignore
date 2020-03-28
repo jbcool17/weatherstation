@@ -25,3 +25,6 @@
 *.pdf
 .env
 npm-debug.log
+
+
+ruby/
