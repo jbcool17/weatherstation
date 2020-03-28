@@ -3,12 +3,12 @@ class HomeController < ApplicationController
 
   # Main Home Page
   def index
-      @sensors = Sensor.all
-      @chart_data =  @sensors.map { |s| { name: s.name, data: s.weather_datum.last(10).collect { |w| [w.created_at.strftime("%H:%M:%S"), w.temp] } }}
+      @sensor = Sensor.first
   end
 
   # Live Sensor View
   def live
+    @sensors = Sensor.all
     @host = "#{request.protocol}#{request.host_with_port}"
     @url = request.url
   end

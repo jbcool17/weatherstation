@@ -1,7 +1,7 @@
 namespace :outside_weather do
   desc "Get Outside Weather Data"
   task current: :environment do
-    url = URI("http://api.openweathermap.org/data/2.5/weather?zip=10019%2Cus&appid=#{ENV['WEATHER_API_KEY']}&units=Imperial")
+    url = URI("https://api.openweathermap.org/data/2.5/weather?zip=#{ENV['WEATHER_ZIP_CODE']}&appid=#{ENV['WEATHER_API_KEY']}&units=Imperial")
 
     http = Net::HTTP.new(url.host, url.port)
 
@@ -16,3 +16,5 @@ namespace :outside_weather do
   end
 
 end
+
+# curl 'https://api.openweathermap.org/data/2.5/weather?zip=10128&appid=<KEY>&units=Imperial'
