@@ -28,3 +28,5 @@ npm-debug.log
 
 
 ruby/
+.current_version
+.previous_version
