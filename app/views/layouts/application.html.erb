@@ -25,8 +25,8 @@
               <li><a href="/" class="logo">
                 Weather Station | <i class="fa fa-sun-o" aria-hidden="true"></i>
               </a></li>
+              <li><%= link_to "Live Data", sensor_live_path %></li>
               <% if logged_in? %>
-                <li><%= link_to "Live Data", sensor_live_path %></li>
                 <li><%= link_to "Admin Panel", admin_path %></li>
                 <li><%= link_to "Logout #{User.find(session[:user_id]).email}", logout_path %></li>
               <% else %>
