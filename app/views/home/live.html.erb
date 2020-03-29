@@ -43,19 +43,18 @@
 <hr>
 <h2>SENSOR CHARTS</h2>
 <% @sensors.each do |s| %>
-  <div class='sensor-panel'>
+  <div class='sensor-panel sensor-panel-extra'>
     <h3><%= s.name %></h3>
 
     <div class="temp-circle">
       <%= s.weather_datum.last.temp %>&#8457;
     </div>
     <div class="chart">
-      <%= line_chart [{name: s.name, data: s.weather_datum.each_slice(10).map(&:last).last(10).collect { |t| [t.created_at.strftime("%H:%M:%S"), t.temp] }},
-                      {name: 'Max', data: s.weather_datum.each_slice(10).map(&:last).last(10).collect { |t| [t.created_at.strftime("%H:%M:%S"), s.trigger_temp_max] } },
-                      {name: 'Min', data: s.weather_datum.each_slice(10).map(&:last).last(10).collect { |t| [t.created_at.strftime("%H:%M:%S"), s.trigger_temp_min] } }],
-                      width: "85%", height: "200px",colors: ["forestgreen", "tomato", "deepskyblue"] %>
+      <%= line_chart [{name: "tempurature", data: s.weather_datum.each_slice(20).map(&:last).last(20).collect { |t| [t.created_at.strftime("%H:%M:%S"), t.temp] }},
+                      {name: "humidity", data: s.weather_datum.each_slice(20).map(&:last).last(20).collect { |t| [t.created_at.strftime("%H:%M:%S"), t.humidity] }}],
+                      width: "85%", height: "500px",colors: ["forestgreen", "tomato", "deepskyblue"],min: 0, max: 100, refresh: 20, xtitle: "Time", ytitle: "Temp / Humidity" %>
     </div>
-    <p>Max: <%= s.trigger_temp_max %> / Min: <%= s.trigger_temp_min %></p>
-    <p>Total: <%= s.notifications.count %> / Last: <% if s.notifications.count > 0 %> <%= s.notifications.last.created_at %> <% end %></p>
+    <p>TRIGGERS: Max: <%= s.trigger_temp_max %> / Min: <%= s.trigger_temp_min %></p>
+    <p>NOTIFICATIONS: Total: <%= s.notifications.count %> <% if s.notifications.count > 0 %> / Last: <%= s.notifications.last.created_at %> <% end %></p>
   </div>
   <% end %>
